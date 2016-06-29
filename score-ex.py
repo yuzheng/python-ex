@@ -14,23 +14,35 @@ students = {"Tom":[100,90,88,95,55], "John":[70,78,60,89], "Amy":[50,66,20,88,30
 #students.pop(0)
 
 #max
-firstStudent = {"name":"","score":0}
+firstStudent = {}
 #min
-lastStudent = {"name":"","score":9999}
+lastStudent = {}
+
+maxcount = 0
 
 for student,scores in students.items():
+	count = 0
+	for score in scores:
+		count = count + 1
+	if maxcount < count:
+		maxcount = count
+print("maxcount:%d"%maxcount)
+for student,scores in students.items():
 	sum = 0
-	index = 0
+	count = 0
 	for score in scores:
 		sum += float(score)
-		index = index + 1
-	avg = sum/index
-	if avg > firstStudent["score"]:
-		firstStudent["name"] = student
-		firstStudent["score"] = avg
-	if avg < lastStudent["score"]:
-		lastStudent["name"] = student
-		lastStudent["score"] = avg
-	print(student,': sum is ',sum, ' and avg is ',avg)
-print('The highest student:',firstStudent["name"],': avg is ',firstStudent["score"])
-print('The lowest student:',lastStudent["name"],': avg is ',lastStudent["score"])
+		count = count + 1
+	studentDict = {"name":student,"sum":sum,"count":count,"avg":sum/count}
+	#studentDict = {"name":student,"sum":sum,"count":count,"avg":sum/maxcount}
+	if not firstStudent:
+		firstStudent = studentDict
+	if not lastStudent:
+		lastStudent = studentDict
+	if studentDict["avg"] > firstStudent["avg"]:
+		firstStudent = studentDict
+	if studentDict["avg"] < lastStudent["avg"]:
+		lastStudent = studentDict	
+	print(studentDict)
+print('The highest student:',firstStudent["name"],': avg is ',firstStudent["avg"])
+print('The lowest student:',lastStudent["name"],': avg is ',lastStudent["avg"])
