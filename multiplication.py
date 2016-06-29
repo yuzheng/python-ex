@@ -10,7 +10,8 @@ print("for version")
 #range(a,b) 產生a 到 b-1的數字,例如range(1,5)=>1,2,3,4
 for i in range(1,n+1):
 	for j in range(1,n+1):
-		print(i,"*",j," = ",i*j)
+		#print(" %d * %d = %d" % (i,j,i*j))
+		print(" %(a)d * %(b)d = %(c)d" % {'a':i,'b':j,'c':i*j})
 # (while 迴圈版本)
 #n = int(input('Please input n:'))
 print("while version")
@@ -18,6 +19,9 @@ p = 1
 while p <= n:
 	q = 1
 	while q <= n:
-		print(p,"*",q," = ",p*q)
+		#print(p,"*",q," = ",p*q)
+		#print(" {0} * {1} = {2} ".format(p,q,p*q))
+		#print(" {} * {} = {} ".format(p,q,p*q))
+		print(" {a} * {b} = {c} ".format(b=p,a=q,c=p*q))
 		q += 1
 	p += 1
