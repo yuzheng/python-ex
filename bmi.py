@@ -36,4 +36,3 @@ elif 30 <= BMI < 35:
     print('中度肥胖')
 else:
     print('重度肥胖')
-Raw
